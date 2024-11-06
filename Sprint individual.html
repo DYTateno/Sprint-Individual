@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+        /* FONTE:VIGA */
+        @import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Danfo&family=Viga&display=swap');
+        /*FONTE: ANTON SC*/
+        @import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Danfo&display=swap');
+        /*FONTE: GABARITO*/
+        @import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Danfo&family=Gabarito:wght@400..900&family=Viga&display=swap');
+        /* FONTE: LEXEND */
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+        /* FONTE: NEW AMSTERDAM */
+        @import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&display=swap');
+    </style>
+</head>
+
+<body>
+
+    <div class="siteTop">
+        <div class="Header">
+            <select onchange="mudarPersonagem()" name="personagem" id="personagem">
+                <option value="Mob">Mob</option>
+                <option value="Luffy">Luffy</option>
+            </select>
+
+            <img id="logo" src=".//imgs/CnP_30102024_112742-removebg-preview.png" alt="">
+
+            <div id="loginCadastro">
+
+                <!-- botão login -->
+                <span class="login" onclick="Cadastro()"><a style="color: greenyellow; text-decoration: none;"
+                        href="https://www.youtube.com/watch?v=wPaXNs7-Ikw">Cadastre-se</a></span>
+
+                <!-- botão cadastro -->
+                <span class="cadastro" onclick="Login()"><a style="color: greenyellow; text-decoration: none;"
+                        href="https://www.youtube.com/watch?v=wPaXNs7-Ikw">Login</a></span>
+
+            </div>
+        </div>
+        <div class="contexto">
+            <div id="mobBG"></div>
+            <div class="fundoBlur"></div>
+            <img id="imgFundo" src="https://image.tmdb.org/t/p/original/p4ySfM7yULC43n9CvJ45I9OeORa.jpg" alt="">
+            <span id="contextoSpan">A história de Mob Psycho 100 segue <a style="color: white;"
+                    href="https://m.media-amazon.com/images/I/718ePoGUOiL._AC_UF894,1000_QL80_.jpg"><b>Shigeo
+                        Kageyama</b></a>, conhecido como Mob, um adolescente aparentemente comum que possui habilidades
+                psíquicas extremamente poderosas. Apesar de seus dons, Mob é introvertido, emocionalmente contido e luta
+                para encontrar seu lugar no mundo. Ele deseja viver uma vida normal e não usar seus poderes, temendo
+                machucar os outros e a si mesmo.</span>
+
+        
+        </div>
+
+        <div class="Hub">
+
+
+
+            <img class="mob" src=".//imgs/Mob_Fullbody.webp" alt="">
+            <div class="HubBG"></div>
+            <div class="square"></div>
+            <div class="qualidadesMobR TextoMob">
+                <div id="frase1">adora comer COCOTINHAS!</div>
+                <div id="frase2">30cm</div>
+                <div id="frase3">tem dinheiro Money!!</div>
+                <div id="frase4">Cabelinho Na régua</div>
+            </div>
+            <div class="qualidadesMobL TextoMob">
+                <div id="frase5">Roupa de Patrão</div>
+                <div id="frase6">Fodão</div>
+                <div id="frase7">Usa Air Jordans (Brancos)</div>
+                <div id="frase8">Roupa de Patrãoaaaaaaa</div>
+            </div>
+        </div>
+
+
+        <div class="Frases">
+            <div class="Escuro"></div>
+            <video autoplay muted loop class="bgVideo" src=".//Vids/MobScenes2.mp4"></video>
+            <div class="FrasesTexto">
+                <div id="textoRotativo">Para ser bem sucedido, você deve encarar a realidade.</div>
+
+
+            </div>
+        </div>
+        <div class="ONU">
+            <div id="textoOnu">
+                <span></span>
+            </div>
+            <img id="OnuObjetivo" src="https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-16.svg"
+                alt="">
+            <div id="OnuCriterio"></div>
+        </div>
+
+</body>
+
+</html>
+<script>
+
+
+    function mudarPersonagem() {
+
+
+
+        if (personagem.value == "Mob") {
+            document.querySelector("#logo").src = ".//imgs/CnP_30102024_112742-removebg-preview.png";
+        document.querySelector("#textoRotativo").innerHTML = "Para ser bem sucedido, você deve encarar a realidade.";
+        document.querySelector("#mobBG").style.backgroundImage = "url('.//imgs/Screenshot_1.png')";
+        document.querySelector("#imgFundo").src = "https://image.tmdb.org/t/p/original/p4ySfM7yULC43n9CvJ45I9OeORa.jpg";
+        document.querySelector("#imgFundo").style.maxWidth = "500px"
+        document.querySelector("#contextoSpan").innerHTML = 'A história de Mob Psycho 100 segue <a style="color: white;"             href="https://m.media-amazon.com/images/I/718ePoGUOiL._AC_UF894,1000_QL80_.jpg"><b>Shigeo                    Kageyama</b></a>, conhecido como Mob, um adolescente aparentemente comum que possui habilidades            psíquicas extremamente poderosas. Apesar de seus dons, Mob é introvertido, emocionalmente contido e luta          para encontrar seu lugar no mundo. Ele deseja viver uma vida normal e não usar seus poderes, temendo        machucar os outros e a si mesmo.';
+        document.querySelector(".mob").src = ".//imgs/Mob_Fullbody.webp";
+
+        //HUB
+        document.querySelector(".Hub").style.borderTop = "solid #ce1a83"
+
+                
+        // frases
+        document.querySelector("#frase1").innerHTML = "LUFFY";
+        document.querySelector("#frase2").innerHTML = "LUFFY";
+        document.querySelector("#frase3").innerHTML = "LUFFY";
+        document.querySelector("#frase4").innerHTML = "LUFFY";
+        document.querySelector("#frase5").innerHTML = "LUFFY";
+        document.querySelector("#frase6").innerHTML = "LUFFY";
+        document.querySelector("#frase7").innerHTML = "LUFFY";
+        document.querySelector("#frase8").innerHTML = "LUFFY";
+                
+        // vídeo e ONU
+        document.querySelector(".bgVideo").src = ".//Vids/MobScenes2.mp4";
+        document.querySelector("#OnuObjetivo").src = "https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-16.svg";
+        document.querySelector(".ONU").style.backgroundColor = "#00689d";
+        document.querySelector(".square").style.backgroundColor = " rgb(83, 249, 255)";
+        document.querySelector(".login a").style.color = "greenyellow";
+        document.querySelector(".cadastro a").style.color = "greenyellow";
+
+
+        } else if (personagem.value == "Luffy") {
+        document.querySelector("#logo").src = ".//imgs/One_Piece_Logo-min.png";
+        document.querySelector("#textoRotativo").innerHTML = "Babas";
+        document.querySelector("#mobBG").style.backgroundImage = "url('./imgs/CnP_30102024_112742-removebg-preview.png')";
+        document.querySelector("#imgFundo").src = "https://preview.redd.it/send-your-favorite-manga-volume-cover-heres-mine-v0-kuw7cu8xtl7b1.jpeg?width=1012&format=pjpg&auto=webp&s=8c031940191944f3d37ddff8e7e67bb7c798453a";
+        document.querySelector("#imgFundo").style.maxWidth = "500px"
+        document.querySelector("#contextoSpan").innerHTML = 'A história de One Piece conta a história de <a style="color: white;" href="https://m.media-amazon.com/images/I/718ePoGUOiL._AC_UF894,1000_QL80_.jpg"><b>Monkey D. Luffy</b></a>, bababas';
+        document.querySelector(".mob").src = "./imgs/kindpng_7942531.png";
+
+        //HUB
+        document.querySelector(".Hub").style.borderTop = "solid #ff2f2f"
+
+                
+        // frases
+        document.querySelector("#frase1").innerHTML = "LUFFY";
+        document.querySelector("#frase2").innerHTML = "LUFFY";
+        document.querySelector("#frase3").innerHTML = "LUFFY";
+        document.querySelector("#frase4").innerHTML = "LUFFY";
+        document.querySelector("#frase5").innerHTML = "LUFFY";
+        document.querySelector("#frase6").innerHTML = "LUFFY";
+        document.querySelector("#frase7").innerHTML = "LUFFY";
+        document.querySelector("#frase8").innerHTML = "LUFFY";
+                
+        // vídeo e ONU
+        document.querySelector(".bgVideo").src = "./Vids/LuffyScenes.mp4";
+        document.querySelector("#OnuObjetivo").src = "https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-10.svg";
+        document.querySelector(".ONU").style.backgroundColor = "#dd1367";
+        document.querySelector(".square").style.backgroundColor = " rgb(130, 255, 147)";
+        document.querySelector(".login a").style.color = "cyan";
+        document.querySelector(".cadastro a").style.color = "cyan";
+       
+        
+
+
+                    
+        }
+    }
+
+</script>
