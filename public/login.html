@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Login</title>
+</head>
+<style>
+    /* FONTE:VIGA */
+    @import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Danfo&family=Viga&display=swap');
+    /*FONTE: ANTON SC*/
+    @import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Danfo&display=swap');
+    /*FONTE: GABARITO*/
+    @import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Danfo&family=Gabarito:wght@400..900&family=Viga&display=swap');
+    /* FONTE: LEXEND */
+    @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+    /* FONTE: NEW AMSTERDAM */
+    @import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&display=swap');
+    /* FONTE: SUSE */
+    @import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Danfo&family=Gabarito:wght@400..900&family=SUSE:wght@100..800&family=Viga&display=swap');
+</style>
+
+<body>
+    <div class="siteTop">
+        <div class="Header">
+            <a href=".//index.html"><img class="home" src=".//imgs/home.png" alt=""></a>
+            </select>
+            <div id="loginCadastro">
+
+                <!-- botão login -->
+                <span class="login" onclick="Cadastro()"><a style="color: greenyellow; text-decoration: none;"
+                        href=".//Cadastro.html">Cadastre-se</a></span>
+
+                <!-- botão cadastro -->
+                <span class="cadastro" onclick="Login()"><a style="color: greenyellow; text-decoration: none;"
+                        href=".//Login.html">Login</a></span>
+
+            </div>
+
+        </div>
+        <div class="Cadastro">
+
+            <div class="UserInputs" style="height: 50vh; ">
+                <div id="aviso">Por favor preencha todos os dados antes de continuar</div>
+                <span class="Texto">Login</span>
+                <div id="interativos">
+
+                    <input id="ipt_Email" placeholder="Email" class="inputSpace" type="text">
+                    <input id="ipt_Senha" placeholder="Senha" class="inputSpace" type="password">
+
+                    <button onclick="buttonLogin()" class="button">Login</button>
+                </div>
+
+
+            </div>
+        </div>
+
+</body>
+
+</html>
+
+<script>
+
+    function buttonLogin() {
+
+        // var emailVar = ipt_Email.value;
+        // var senhaVar = ipt_Senha.value;
+
+
+        // if (senhaVar == "" || emailVar == "") {
+        //     document.getElementById("aviso").style.display = "block";
+        // }
+        // else {
+        //     document.getElementById("aviso").style.display = "none";
+        // }
+
+
+        // fetch("/usuarios/autenticar", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     },
+        //     body: JSON.stringify({
+        //         emailServer: emailVar,
+        //         senhaServer: senhaVar
+        //     })
+        // }).then(function (resposta) {
+        //     console.log("ESTOU NO THEN DO entrar()!")
+
+        //     if (resposta.ok) {
+        //         console.log(resposta);
+
+        //         resposta.json().then(json => {
+        //             console.log(json);
+        //             console.log(JSON.stringify(json));
+        //             sessionStorage.EMAIL_USUARIO = json.email;
+        //             sessionStorage.NOME_USUARIO = json.nome;
+
+
+        //             setTimeout(function () {
+        //                 window.location = "./dashboard/cards.html";
+        //             }, 1000); // apenas para exibir o loading
+
+        //         });
+
+        //     } else {
+
+        //         console.log("Houve um erro ao tentar realizar o login!");
+
+        //         resposta.text().then(texto => {
+        //             console.error(texto);
+        //             (xto);
+        //         });
+        //     }
+
+        // }).catch(function (erro) {
+        //     console.log(erro);
+        // })
+
+        var emailVar = ipt_Email.value;
+        var senhaVar = ipt_Senha.value;
+
+        if (emailVar == "" || senhaVar == "") {
+          
+            aviso.innerHTML = `Por favor preencha todos os dados antes de continuar`
+            document.getElementById("aviso").style.display = "block";
+            return false;
+        }
+        else {
+            document.getElementById("aviso").style.display = "none";
+
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                    setTimeout(function () {
+                        window.location = ".//dashboard.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+                document.getElementById("aviso").style.display = "block";
+                aviso.innerHTML = `Email ou senha incorretos`
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
+
+
+</script>

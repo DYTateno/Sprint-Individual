@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seleção de Personagens</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="rating-box">
+    <div class="Personagens">
+      <!-- PERSONAGEM 1 -->
+      <div class="op" onclick="escolha('Reigen')">
+        <div id="div_Icone"></div>
+        <span><br>Reigen <br></span>
+        <input name="personagem" id="Reigen" type="radio" />
+      </div>
+
+      <!-- PERSONAGEM 2 -->
+      <div class="op" onclick="escolha('Shigeo')">
+        <div id="div_Icone"></div>
+        <span><br>Shigeo <br></span>
+        <input name="personagem" id="Shigeo" type="radio" />
+      </div>
+
+      <!-- PERSONAGEM 3 -->
+      <div class="op" onclick="escolha('Ritsu')">
+        <div id="div_Icone"></div>
+        <span><br>Ritsu <br></span>
+        <input name="personagem" id="Ritsu" type="radio" />
+      </div>
+
+      <!-- PERSONAGEM 4 -->
+      <div class="op" onclick="escolha('Tsubomi')">
+         <div id="div_Icone"></div>
+        <span><br>Tsubomi <br></span>
+        <input name="personagem" id="Tsubomi" type="radio" />
+      </div>
+
+      <!-- PERSONAGEM 5 -->
+      <div class="op" onclick="escolha('Covinhas')">
+         <div id="div_Icone"></div>
+        <span><br>Covinhas <br></span>
+        <input name="personagem" id="Covinhas" type="radio" />
+      </div>
+
+      <!-- PERSONAGEM 6 -->
+      <div class="op" onclick="escolha('Teruki')">
+         <div id="div_Icone"></div>
+        <span><br>Teruki <br></span>
+        <input name="personagem" id="Teruki" type="radio" />
+      </div>
+
+      <!-- PERSONAGEM 7 -->
+      <div class="op" onclick="escolha('Tome')">
+         <div id="div_Icone"></div>
+        <span><br>Tome <br></span>
+        <input name="personagem" id="Tome" type="radio" />
+      </div>
+
+      <!-- PERSONAGEM 8 -->
+      <div class="op" onclick="escolha('Serizawa')">
+         <div id="div_Icone"></div>
+        <span><br>Serizawa <br></span>
+        <input name="personagem" id="Serizawa" type="radio" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function escolha(personagemId) {
+      // Seleciona o radio button com o ID passado como argumento e o marca
+      document.getElementById(personagemId).checked = true;
+    }
+  </script>
+</body>
+</html>

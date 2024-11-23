@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Dashboard</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+
+</head>
+<style>
+    /* FONTE:VIGA */
+    @import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Danfo&family=Viga&display=swap');
+    /*FONTE: ANTON SC*/
+    @import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Danfo&display=swap');
+    /*FONTE: GABARITO*/
+    @import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Danfo&family=Gabarito:wght@400..900&family=Viga&display=swap');
+    /* FONTE: LEXEND */
+    @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+    /* FONTE: NEW AMSTERDAM */
+    @import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&display=swap');
+    /* FONTE: SUSE */
+    @import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Danfo&family=Gabarito:wght@400..900&family=SUSE:wght@100..800&family=Viga&display=swap');
+</style>
+
+<body>
+
+    <div class="Header">
+        <a href=".//index.html"><img class="home" src=".//imgs/home.png" alt=""></a>
+        </select>
+        <div class="HeaderOpts">
+            <div>Configurações</div>
+            <div>Dados</div>
+            <div>Minha Conta</div>
+        </div>
+        <div id="loginCadastro">
+
+
+            <!-- botão login -->
+            <span style="visibility: hidden;" class="login" onclick="Cadastro()"><a
+                    style="color: greenyellow; text-decoration: none;" href=".//Cadastro.html">Cadastre-se</a></span>
+
+            <!-- botão cadastro -->
+            <span style="visibility: hidden;" class="cadastro" onclick="Login()"><a
+                    style="color: greenyellow; text-decoration: none;" href=".//Login.html">Login</a></span>
+        </div>
+    </div>
+
+    <div class="Graficos">
+
+
+        <div class="Fundao">
+
+            <span class="textoDash">DASHBOARD</span>
+            <div class="Fundinho">
+                <canvas id="dados"></canvas>
+            </div>
+            <div class="informacoes">
+                <div id="infoDash"></div>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+</body>
+
+</html>
+<script>
+
+    
+
+     function atualizarGrafico(idUser, dados, myChart) {
+
+
+
+fetch(`/medidas/tempo-real/${idUser}`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (novoRegistro) {
+
+            obterdados(idUser);
+            // alertar(novoRegistro, id);
+            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+            console.log(`Dados atuais do gráfico:`);
+            console.log(dados);
+
+            let avisoCaptura = document.getElementById(`avisoCaptura${idUser}`)
+            avisoCaptura.innerHTML = ""
+
+
+            if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                console.log("---------------------------------------------------------------")
+                console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                console.log("Horário do novo dado capturado:")
+                console.log(novoRegistro[0].momento_grafico)
+                console.log("Horário do último dado capturado:")
+                console.log(dados.labels[dados.labels.length - 1])
+                console.log("---------------------------------------------------------------")
+            } else {
+                // tirando e colocando valores no gráfico
+                dados.labels.shift(); // apagar o primeiro
+                dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+                dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+
+                dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+                myChart.update();
+            }
+
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(idUser, dados, myChart), 2000);
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(idUser, dados, myChart), 2000);
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+
+}
+
+    const ctx = document.getElementById('dados').getContext('2d');
+
+
+    // for (var i = 0; i < DatasCriacao.length; i++) {
+    //     if(DatasCriacao[i] == DataAtual){
+    //         dados ++ 
+    //     }else{
+    //         DatasCriacao.push(`'${DataAtual}'`)
+    //     }
+        
+    // }
+  
+
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: 1,
+            datasets: [{
+                label: 'Contas Criadas',
+                data: dados,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 2
+
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+
+                        unit: 'day',
+                        tooltipFormat: 'dd/MM/yyyy',
+                        displayFormats: {
+                            day: 'dd/MM',
+                        }
+                    },
+                    ticks: {
+                        color: '#333',
+                        font: {
+                            size: 12,
+                            family: 'Lexend',
+                        }
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: '#333',
+                        font: {
+                            size: 12,
+                            family: 'Lexend',
+                        }
+                    }
+                }
+            }
+        }
+    });
+   
+    var Adicao = 0;
+    var numeroMaior = 0
+    var contasEquivalentes = ``
+
+    function melhorDia(){
+        contasEquivalentes = ``;
+        numeroMaior = 0;
+        
+        for (var i = 0; i < dados.length; i++) {
+            if(dados[i] > numeroMaior){
+                numeroMaior = dados[i]
+                contasEquivalentes = DatasCriacao[i]
+            }
+        }
+    }
+
+    function mediaPorMes(){
+        Adicao = 0;
+        for (var i = 0; i < dados.length; i++) {
+            Adicao += dados[i]    
+        }
+
+        Adicao = (Adicao / dados.length)
+    }
+    mediaPorMes()
+    melhorDia()
+
+    infoDash.innerHTML = `Média de contas criadas no mês: <br><span style="color:#6dcbcb;">${Math.floor(Adicao + 1)}</span>
+    
+    <br>
+    <br>
+    
+    O dia com mais contas criadas foi<br><span style="color:#6dcbcb;">${contasEquivalentes}</span>
+    `
+
+    atualizarGrafico()
+</script>
