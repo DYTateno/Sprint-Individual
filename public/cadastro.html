@@ -72,218 +72,139 @@
 </body>
 
 </html>
-
 <script>
-
     function seguro() {
-        
         var nomeVar = ipt_Nome.value;
         var emailVar = ipt_Email.value;
         var senhaVar = ipt_Senha.value;
-        var confirmeSenha = false
+        var confirmeSenha = ipt_Confirme.value;
 
         var toUpperCase = senhaVar.toUpperCase();
         var toLowerCase = senhaVar.toLowerCase();
         var Comprimento = senhaVar.length;
 
-        var especiais = "!@#$%¨&*()_+:;"
-        var temEspeciais = false
+        var especiais = "!@#$%¨&*()_+:;";
+        var temEspeciais = false;
 
-        var numeros = "1234567890"
-        var temNumeros = false
+        var numeros = "1234567890";
+        var temNumeros = false;
 
-        var Minusculo = false
-        var Maiusculo = false
+        var Minusculo = false;
+        var Maiusculo = false;
 
-        var senhaUpper = senhaVar.toUpperCase()
-        var senhaLower = senhaVar.toLowerCase()
+        // Variáveis para acumular o status de cada verificação
+        var requisitosValidos = true;
 
+        // Verificando se a senha contém números
         for (var i = 0; i < numeros.length; i++) {
             if (senhaVar.includes(numeros[i])) {
-                temNumeros = true
+                temNumeros = true;
             }
         }
 
+        // Verificando se a senha contém caracteres especiais
         for (var i = 0; i < especiais.length; i++) {
             if (senhaVar.includes(especiais[i])) {
-                temEspeciais = true
+                temEspeciais = true;
             }
-        }
-        for (var i = 0; i < Comprimento; i++) {
-            if (senhaVar == senhaVar) {
-                confirmeSenha = true
-            }
-        }
-        if(Comprimento > 1){
-        for (var i = 0; i < Comprimento; i++) {
-            if (senhaVar.includes(senhaUpper[i])) {
-                Maiusculo = true
-            }
-        }
-        for (var i = 0; i < Comprimento; i++) {
-            if (senhaVar.includes(senhaLower[i])) {
-                Minusculo = true
-            }
-        }
-        }
-        
-        for (var i = 0; i < especiais.length; i++) {
-    if (senhaVar.includes(especiais[i])) {
-        temEspeciais = true;
-        break; 
-    }
-}
-
-        if (Maiusculo == true && Minusculo == true) {
-            document.querySelector(".requisitoUpperLower").style.color = "green";
-        } else {
-            document.querySelector(".requisitoUpperLower").style.color = "red";
-            return false
         }
 
+        // Verificando se a senha contém letras maiúsculas e minúsculas
+        for (var i = 0; i < Comprimento; i++) {
+            if (senhaVar.includes(senhaVar[i].toUpperCase())) {
+                Maiusculo = true;
+            }
+            if (senhaVar.includes(senhaVar[i].toLowerCase())) {
+                Minusculo = true;
+            }
+        }
+
+        // Verificação do comprimento
         if (Comprimento < 8) {
             document.querySelector(".requisitoComprimento").style.color = "red";
-            return false
+            requisitosValidos = false;
         } else {
             document.querySelector(".requisitoComprimento").style.color = "green";
-            
         }
-        if (temEspeciais == false) {
+
+        // Verificando se a senha possui letras maiúsculas e minúsculas
+        if (!(Maiusculo && Minusculo)) {
+            document.querySelector(".requisitoUpperLower").style.color = "red";
+            requisitosValidos = false;
+        } else {
+            document.querySelector(".requisitoUpperLower").style.color = "green";
+        }
+
+        // Verificando se a senha possui caracteres especiais
+        if (!temEspeciais) {
             document.querySelector(".requisitoEspecial").style.color = "red";
-            return false
+            requisitosValidos = false;
         } else {
             document.querySelector(".requisitoEspecial").style.color = "green";
-            
         }
-        if (temNumeros == true) {
-            document.querySelector(".requisitoNumero").style.color = "green";
-        } else {
+
+        // Verificando se a senha possui números
+        if (!temNumeros) {
             document.querySelector(".requisitoNumero").style.color = "red";
-            return false
+            requisitosValidos = false;
+        } else {
+            document.querySelector(".requisitoNumero").style.color = "green";
         }
 
-        // if (Comprimento > 0) {
-        //     if (senhaVar == ) {
-        //         aviso.innerHTML = "Por favor preencha todos os dados antes de continuar";
-        //     } else {
-
-        //         aviso.innerHTML = "As senhas não conferem";
-        //     }
-        // } else { aviso.innerHTML = "Por favor preencha todos os dados antes de continuar"; }
-        return true
+        // Se todos os requisitos forem válidos, a função retorna true
+        return requisitosValidos;
     }
 
-
     function cadastrar() {
-        // aguardar();
-
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-
-        if(!seguro()){
-            return
+        // Se as verificações de segurança não passarem, não prossegue
+        if (!seguro()) {
+            return;
         }
 
         var nomeVar = ipt_Nome.value;
         var emailVar = ipt_Email.value;
         var senhaVar = ipt_Senha.value;
-        var confirmeSenha = `a`
+        var confirmeSenha = ipt_Confirme.value;
 
-        var toUpperCase = senhaVar.toUpperCase();
-        var toLowerCase = senhaVar.toLowerCase();
-        var Comprimento = Comprimento;
-
-
+        // Verificando se algum campo está vazio
         if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmeSenha == "") {
             aviso.style.display = "block";
+            aviso.innerHTML = "Por favor, preencha todos os dados antes de continuar";
             return false;
-        }
-        else {
+        } else {
             aviso.style.display = "none";
-
-            // ;
-           
         }
 
-        // // Verificando se há algum campo em branco
-        // if (
-        //   nomeVar == "" ||
-        //   emailVar == "" ||
-        //   senhaVar == "" ||
-        //   confirmacaoSenhaVar == "" ||
-        //   codigoVar == ""
-        // ) {
-        //   aviso.style.display = "block";
-        //   mensagem_erro.innerHTML =
-        //     "(Mensagem de erro para todos os campos em branco)";
-
-        //   ;
-        //   return false;
-        // } else {
-        //   setInterval(sumirMensagem, 5000);
-        // }
-
-        // Verificando se o código de ativação é de alguma empresa cadastrada
-        // for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-        //   if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        //     idEmpresaVincular = listaEmpresasCadastradas[i].id
-        //     console.log("Código de ativação válido.");
-        //     break;
-        //   } else {
-        //     aviso.style.display = "block";
-        //     mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        //     ;
-        //   }
-        // }
-
-        // Enviando o valor da nova input
+        // Enviando os dados para o servidor
         fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
                 nomeServer: nomeVar,
                 emailServer: emailVar,
                 senhaServer: senhaVar,
-                // idEmpresaVincularServer: idEmpresaVincular
             }),
         })
             .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
                 if (resposta.ok) {
                     aviso.style.display = "block";
-
-
-                    aviso.innerHTML = `<span style="color: green;">Cadastro realizado com sucesso</span>`
-
+                    aviso.innerHTML = `<span style="color: green;">Cadastro realizado com sucesso!</span>`;
                     setTimeout(() => {
                         window.location = "login.html";
-                    }, "2000");
-
-                    limparFormulario();
-                    ;
+                    }, 2000);
                 } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
+                    throw "Erro ao realizar o cadastro!";
                 }
             })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                ;
+            .catch(function (erro) {
+                console.log(`#ERRO: ${erro}`);
+                aviso.style.display = "block";
+                aviso.innerHTML = `<span style="color: red;">${erro}</span>`;
             });
 
         return false;
     }
-
-
-    function sumirMensagem() {
-        aviso.style.display = "none";
-    }
-
-
-
 
 </script>

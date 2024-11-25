@@ -53,6 +53,7 @@ body {
 
     /* esse comando tira a seta do lado do select */
     -webkit-appearance: none;
+    appearance: calc();
 }
 
 .home {
@@ -64,6 +65,16 @@ body {
     left: 1%;
     transition: all 0.2s ease;
     filter: invert();
+
+}
+
+#videozinho{
+    transition: all 0.2s ease;
+
+}
+#videozinho:hover {
+    transform: scale(1.03);
+   
 
 }
 
@@ -302,47 +313,175 @@ body {
 }
 
 
-#Desigualdade{
-height: 600px;
-background-color: #dd1367;
-width: 100vw;
-display: flex;
-justify-content: flex-end;
-align-items: center;
-
+#Desigualdade {
+    height: 400px;
+    background-color: #dd1367;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 
 }
 
-.OnuDescricao{
+#Pobreza {
+    height: 400px;
+    background-color: #e5243b;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+#Paz {
+    height: 400px;
+    background-color: #ff3a21;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+#Agua {
+    height: 400px;
+    background-color: #0a97d9;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+.Conclusao {
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: visible;
+    background-image: url(.//imgs/wallpaperConclusao.png);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    
+  
+}
+
+.miniBorda {
+    width: 94%;
+    height: 90%;
+    background-color: outer;
+    position: absolute;
+    border: 4px solid black;
+    box-sizing: border-box;
+}
+
+.Conclusao span {
+
+    background: linear-gradient(rgb(255, 50, 50), rgb(224, 52, 0));
+    text-align: center;
+    padding-top: 3%;
+    padding-right: 2%;
+    padding-left: 2%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 200%;
+    width: 30%;
+    text-align: center;
+    font-family: LEXEND;
+    text-align-last: ellipsis;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    overflow: hidden;
+    height: 100%;
+    text-decoration: none;
+    z-index: 5;
+    filter: drop-shadow(3px 3px 5px black);
+    filter:drop-shadow(rgb(255, 255, 255) 6px 6px 2px )drop-shadow(rgb(255, 255, 255) -6px -6px 2px )  ;
+}
+
+.Conclusao img {
+    width: 700px;
+    z-index: 5;
+    height: fit-content;
+    margin-right: -5%;
+    overflow: hidden;
+    filter:drop-shadow(rgb(255, 255, 255) 12px 12px 2px )drop-shadow(rgb(255, 255, 255) -12px -12px 2px )  ;
+
+}
+
+.OnuDescricao {
     font-size: 30px;
 }
-#Desigualdade img{
-    width: 600px; 
-    height: 140px; 
+
+.midiaOnu {
+    display: flex;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+
+}
+
+
+.midiaOnu img {
+    width: 500px;
+    height: 150px;
     object-fit: cover;
-    object-position: 0% 9%; 
+    object-position: 0% 5%;
     bottom: 0;
     margin-bottom: auto;
     left: 0;
+
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    
+
 }
 
-.textoDesigualdade{
-background-color: green;
-display: flex;
-justify-content: center;
-align-items: center;
-font-size: 150%;
-font-family: SUSE;
-height: 100%;
-width: 60vw;
-left: 0;
-margin-left: auto;
-right: 0;
-margin-right: auto;
+.midiaOnu video {
+    width: 410px;
+    margin-bottom: 10px;
+    border-radius: 23px;
+
+}
+
+.textoOnu {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 200%;
+    text-align: center;
+    font-family: SUSE;
+    flex-direction: column;
+    height: 90%;
+    color: #202020;
+    border-radius: 20px;
+    width: 60vw;
+    left: 0;
+    margin-left: auto;
+    right: 0;
+    margin-right: auto;
+
+}
+
+.textoOnu h1 {
+    margin-bottom: 6%;
+}
+
+.miniTitulo {
+    font-size: 50px;
+    margin-bottom: -30px;
+    font-weight: 900;
 
 }
 
