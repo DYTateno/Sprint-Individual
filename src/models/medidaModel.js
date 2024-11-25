@@ -1,22 +1,16 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas( ) {
- 
-    var instrucaoSql = `SELECT 
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    FROM medida`
+function buscarUltimasMedidas(idUser) {
+
+    var instrucaoSql = `SELECT momento, COUNT(id) as 'soma' FROM medida WHERE id >= ${idUser} GROUP BY momento`
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal( ) {
+function buscarMedidasEmTempoReal(idUser) {
 
-    var instrucaoSql = `SELECT 
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    FROM medida`
+    var instrucaoSql = `SELECT momento, COUNT(id) as 'soma' FROM medida WHERE id >= ${idUser} GROUP BY momento`
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }

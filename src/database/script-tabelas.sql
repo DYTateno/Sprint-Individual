@@ -23,10 +23,9 @@ CREATE TABLE usuario (
 
 create table medida (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	momento DATETIME,
-	fkUsuario INT,
-	FOREIGN KEY (fkUsuario) REFERENCES usuario(id)
- );
+	momento DATETIME
+);
 
-INSERT INTO medida VALUES
-(1, '2023-02-02 23:00:00', 1);
+INSERT INTO medida(momento) VALUES
+(CURRENT_DATE); 
+
