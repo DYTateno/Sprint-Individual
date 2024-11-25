@@ -14,25 +14,48 @@ body {
     display: flex;
     flex-direction: column;
     width: 100vw;
-}
+} 
 
 .Header {
 
 
     z-index: 4;
     display: flex;
-    height: 90px;
+    height: 80px;
     width: 100vw;
     gap: 70%;
     align-items: center;
-    padding-bottom: 0px;
+    padding-bottom: 9px;
+    position: fixed;
     justify-content: space-evenly;
     overflow: hidden;
     background-color: var(--bgContexto);
     z-index: 99;
-
+    filter: drop-shadow(black 2px 2px 8px);
 
 }
+
+.Titulo{
+    margin-top: 100px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: LEXEND;
+    filter: drop-shadow(black 4px 4px 2px);
+    font-size: 50px;
+    z-index: 4;
+    font-weight: 200;
+    color: rgb(255, 255, 255);
+    height: 100px;
+    
+}
+
+
+#contextoSpan{
+    margin-bottom: 750px;
+}
+
 
 .personagem {
     position: relative;
@@ -145,19 +168,7 @@ body {
 
 }
 
-.Titulo {
-    position: absolute;
-    color: white;
-    font-family: ANTON SC;
-    font-size: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
 
-
-}
 
 .contexto {
     display: flex;
@@ -169,7 +180,8 @@ body {
     font-family: lexend;
     position: relative;
     color: white;
-    padding-top: 23px;
+    
+    
 
 
 }
@@ -379,30 +391,24 @@ body {
     box-sizing: border-box;
 }
 
-.Conclusao span {
-
+.Conclusao #conclusaoSpan {
+    display: flex;
     background: linear-gradient(rgb(255, 50, 50), rgb(224, 52, 0));
-    text-align: center;
-    padding-top: 3%;
     padding-right: 2%;
     padding-left: 2%;
-    align-items: center;
-    justify-content: center;
     border-radius: 5px;
-    flex-direction: row;
-    justify-content: center;
-    font-size: 200%;
+    font-size: 150%;
     width: 30%;
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
+    justify-content: center;
+    align-items: center;
     font-family: LEXEND;
-    text-align-last: ellipsis;
     color: rgb(255, 255, 255);
     font-weight: 600;
     overflow: hidden;
-    height: 100%;
-    text-decoration: none;
     z-index: 5;
-    filter: drop-shadow(3px 3px 5px black);
     filter:drop-shadow(rgb(255, 255, 255) 6px 6px 2px )drop-shadow(rgb(255, 255, 255) -6px -6px 2px )  ;
 }
 
