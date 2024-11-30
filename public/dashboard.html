@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href=".//imgs/oc4d5zck25f71.webp" />
+    <link rel="icon" href="./imgs/oc4d5zck25f71.webp" />
 
     <title>Dashboard</title>
 
@@ -31,7 +31,7 @@
 <body>
 
     <div class="Header">
-        <a href=".//index.html"><img class="home" src=".//imgs/home.png" alt=""></a>
+        <a href="./index.html"><img class="home" src=".//imgs/home.png" alt=""></a>
         </select>
         <div class="HeaderOpts">
             <div>Configurações</div>
@@ -43,11 +43,11 @@
 
             <!-- botão login -->
             <span style="visibility: hidden;" class="login" onclick="Cadastro()"><a
-                    style="color: greenyellow; text-decoration: none;" href=".//Cadastro.html">Cadastre-se</a></span>
+                    style="color: greenyellow; text-decoration: none;" href="./Cadastro.html">Cadastre-se</a></span>
 
             <!-- botão cadastro -->
             <span style="visibility: hidden;" class="cadastro" onclick="Login()"><a
-                    style="color: greenyellow; text-decoration: none;" href=".//Login.html">Login</a></span>
+                    style="color: greenyellow; text-decoration: none;" href="./Login.html">Login</a></span>
         </div>
     </div>
 
@@ -150,6 +150,14 @@ console.log('----------------------------------------------')
 const config = {
     type: 'line',
     data: dados,
+    options: {
+        scales: {
+            y: {
+                min: 0, 
+                max: 10, 
+            }
+        }
+    }
 };
 
 // Adicionando gráfico criado em div na tela
