@@ -11,11 +11,8 @@ CREATE DATABASE sprint;
 
 USE sprint;
 
-SELECT * FROM usuario;
-SELECT * FROM medida;
-
 CREATE TABLE usuario (
-	idUser INT PRIMARY KEY AUTO_INCREMENT,
+	idUser INT PRIMARY KEY auto_increment,
 	nome VARCHAR(50),
 	email VARCHAR(50),
 	senha VARCHAR(50)
@@ -24,8 +21,16 @@ CREATE TABLE usuario (
 create table medida (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	momento DATETIME
-);
+);           
 
-INSERT INTO medida(momento) VALUES
-(CURRENT_DATE); 
 
+SELECT momento, COUNT(id) AS 'soma'
+FROM medida
+GROUP BY momento
+ORDER BY momento DESC;
+
+SELECT momento, COUNT(id) AS 'soma' FROM medida GROUP BY momento ORDER BY momento DESC;
+
+
+SELECT * FROM usuario;
+SELECT * FROM medida;
