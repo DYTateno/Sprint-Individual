@@ -79,12 +79,16 @@ body {
 }
 
 .home {
-    position: relative;
+    position: absolute;
     background-image: url(.//imgs/home.png);
     color: rgb(255, 255, 255);
     height: 60px;
     border-radius: 4px;
-    left: 1%;
+    left: 0;
+    right: 1;
+    margin-top: -23px;
+    margin-right: auto;
+    margin-left: auto;
     transition: all 0.2s ease;
     filter: invert();
 
@@ -758,6 +762,7 @@ body {
     width: 100vw;
     justify-content: center;
     align-items: center;
+    padding-top: 30px;
 
 
 }
@@ -772,6 +777,7 @@ body {
 }
 
 .Fundao {
+
 
     height: 70%;
     width: 76%;
